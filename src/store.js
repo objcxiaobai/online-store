@@ -4,11 +4,7 @@ import Vuex from "vuex";
 Vue.use(Vuex);
 
 export default new Vuex.Store({
-  //状态呀，程序数据所在的位置
-  /*
-  通常被称为我们的应用程序的“单一事实来源”，它作为一个大型树，逻辑上组织我们可能需要从我们的应用程序中的其他地方访问的所有信息;
-用户帐户信息，产品库存，用户购物车中的商品ID等。
-  */
+
   state: {
     cart: [],
     products: [
