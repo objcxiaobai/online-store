@@ -6,7 +6,9 @@ Vue.use(Vuex);
 export default new Vuex.Store({
 
   state: {
+    // 购物车
     cart: [],
+    // 模拟数据
     products: [
       {
         name: "Crewneck T-Shirt",
