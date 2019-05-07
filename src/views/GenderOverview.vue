@@ -11,9 +11,10 @@
             </router-link>
             </li>
         </ul>
+        <!-- 随机推荐 -->
         <div class="wrapper random-items-wrapper">
-            <h2>Our Recommendations</h2>
-            <p>Try these on for size!</p>
+            <h2>我们的建议</h2>
+            <p>试试这个尺寸!</p>
             <section class="random-items">
                 <router-link :to="{ name: 'product', params: { id: randomTop.id}}" class="random-items__item">
                      <img class="product-image" :src="makeImagePath(randomTop)" alt="">
@@ -31,7 +32,7 @@
                     <p><em>${{ randomFootwear.price }}</em></p>
                 </router-link>
           </section>
-        <button class="btn btn--grey" @click="recommendRandomOutfit">Shuffle</button>
+            <button class="btn btn--grey" @click="recommendRandomOutfit">推荐</button>
         </div>
     </div>
 </template>
@@ -48,16 +49,19 @@ export default {
         }
     },
     computed: {
+        // 获取传进来的标题内容
         gender(){
             return this.$route.params.gender
         },
+        // 首字母大写，然后进行裁剪
         pageTitle(){
             return `${this.gender[0].toUpperCase()}${this.gender.slice(1)}`
         },
-        //这个特殊的getter应该将性别计算属性作为参数。
+        //这个特殊的getter将 性别 计算属性作为参数。
         productsByGender(){
             return this.$store.getters.productsByGender(this.gender)
         },
+
 
         randomTop() {
             return this.$store.getters.product(this.randomTopId)
@@ -82,6 +86,7 @@ export default {
         }
     },
     created(){
+            console.log("1")
             this.randomTopId = this.randomProductIdByCategory('Shirts');
             this.randomBottomId = this.randomProductIdByCategory('Pants');
             this.randomFootwearId = this.randomProductIdByCategory('Shoes')

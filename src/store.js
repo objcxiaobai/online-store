@@ -4,7 +4,6 @@ import Vuex from "vuex";
 Vue.use(Vuex);
 
 export default new Vuex.Store({
-
   state: {
     // 购物车
     cart: [],
@@ -520,9 +519,6 @@ export default new Vuex.Store({
   // 突变
   /*
   要更改“状态”对象的内容，
-  操作和突变。
-  动作和突变都包含触发其他事物的功能;
-  动作触发或“提交”突变，并且突变触发状态对象的更改。
   */
   mutations: {
     // 添加到购物车
@@ -547,13 +543,12 @@ export default new Vuex.Store({
       product.quantity++;
     }
   },
-  // 操作
+  // 操作，逻辑处理。
   actions: {
     /*
     {commit}和 payload。
-需要“{commit}”才能进入下一步，进行突变。 
-
-*/
+    需要“{commit}”才能进入下一步，进行突变。 
+    */
     /*第二个参数“payload”是一个标准术语，用于描述传递的数据;
 在这种情况下，该数据是产品ID。 */
     addToCart({ commit }, payload) {
@@ -567,17 +562,23 @@ export default new Vuex.Store({
     }
   },
 
+  // 间接访问state里的数据，你也可以在组件进行逻辑判断，但为了复用最好写在getters。
   getters: {
+    //以下的方法都返回函数的形式,组件以函数的形式调用，返回函数不会进行缓存。
+    //我们在组件传递的id过程中变成了一个字符串，所以在我们的return语句中我们必须将它转换回一个数字
+
+    // 加载对应商品，以数组的形式返回。
     product: state => id => {
       return state.products.filter(p => p.id === Number(id))[0];
     },
     cartItems: state => {
+      // 进行映射，进行判断删
       return state.cart.map(itemId =>
         state.products.find(product => product.id === itemId)
       );
     },
     featuredProducts: state => {
-      // 返回true
+      // 如果是true，就会返回
       return state.products.filter(p => p.featured);
     },
     productsByGender: state => gender => {

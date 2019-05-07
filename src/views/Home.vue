@@ -4,13 +4,12 @@
       <h2>精选商品</h2>
       <ul class="featured-items">
         <li v-for="product in featuredProducts" :key="product.id" class="featured-items__item">
-         
+         <!-- 进入产品详细页面,并且进行传参 -->
          <router-link :to="{ name : 'product' , params: {id : product.id}}" class="router-a">
           <img :src="makeImagePath(product)" alt="" class="product-image">
           <p class="product-title">{{product.name}}</p>
           <p><em>${{product.price}}</em></p>
          </router-link>
-
         </li>
       </ul>
     </section>
@@ -24,13 +23,9 @@ export default {
   name: "home",
   mixins: [imagePath],
   computed:{
-    // products(){
-    //   return this.$store.state.products
-    // }
+
     featuredProducts(){
-      // 把所有为true的拿回来
-      //return this.$store.getters.featuredProducts
-      // 
+      //访问vuex 存储的数据，并且给出范围
       return this.$store.getters.featuredProducts.slice(0,3)
     }
   }

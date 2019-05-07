@@ -4,17 +4,17 @@
             <img class="flex-col--2" :src="makeImagePath(product)" alt="">
             <div class="flex-col--2">
                 <h2>{{product.name}}</h2>
-                <button @click="addToCart" class="btn btn--grey">add to Cart</button>
-                <p>Price: ${{product.price}}</p>
-                <p>Size: {{product.size}}</p>
-                <p>Color: {{product.color}}</p>
-                <p><em>{{product.quantity}} left in stock</em></p>
-                <h3>Details</h3>
+                <button @click="addToCart" class="btn btn--grey">添加购物车</button>
+                <p>价格: ${{product.price}}</p>
+                <p>大小: {{product.size}}</p>
+                <p>颜色: {{product.color}}</p>
+                <p><em>还剩下 {{product.quantity}} 件</em></p>
+                <h3>信息</h3>
                 <ul>
-                    <li>Material: {{product.details.meterial}}</li>
-                    <li>Fit: {{product.details.fit}}</li>
-                    <li>Maintenance: {{product.details.maintenance}}</li>
-                    <li v-if="product.details.additional">Additional: {{product.details.additional}}</li>
+                    <li>材料: {{product.details.material}}</li>
+                    <li>尺寸: {{product.details.fit}}</li>
+                    <li>保护: {{product.details.maintenance}}</li>
+                    <li v-if="product.details.additional">额外: {{product.details.additional}}</li>
                 </ul>
             </div>
         </div>
@@ -27,6 +27,7 @@ export default {
     mixins: [imagePath],
     data(){
         return{
+            // 获取对应产品但id,加载它但信息
             product: this.$store.getters.product(this.$route.params.id)
         }
     },
@@ -35,6 +36,10 @@ export default {
             // 发送一个名为“addToCart”的操作。
             this.$store.dispatch('addToCart',this.$route.params.id);
         }
+    },
+    created(){
+        // 一直会调用这个钩子函数，so，这个组件它不会被复用
+        console.log(this.$route.params.id)
     }
 }
 </script>

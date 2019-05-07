@@ -14,6 +14,7 @@
           </router-link>
       </div>
     </div>
+    <!-- 渲染内容 -->
     <router-view />
   </div>
 </template>
