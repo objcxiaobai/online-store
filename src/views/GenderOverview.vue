@@ -43,8 +43,11 @@ export default {
     mixins: [imagePath],
     data(){
         return{
+            // 上衣
             randomTopId: null,
+            //裤子
             randomBottomId: null,
+            //鞋子
             randomFootwearId: null
         }
     },
@@ -85,13 +88,15 @@ export default {
              this.randomFootwearId = this.randomProductIdByCategory('Shoes');
         }
     },
+    // 复用
     created(){
-            console.log("1")
-            this.randomTopId = this.randomProductIdByCategory('Shirts');
-            this.randomBottomId = this.randomProductIdByCategory('Pants');
-            this.randomFootwearId = this.randomProductIdByCategory('Shoes')
-
+            console.log("test")
             this.recommendRandomOutfit();
+
+    },
+    // 像created 方法和 mounted 钩子函数不会调用,切换性别，可以通过下面方式。
+    beforeUpdate(){
+        this.recommendRandomOutfit();
     }
 }
 </script>
