@@ -8,14 +8,14 @@
                 <div class="flex-col cart-list__item__details">
                     <div>
                         <p>{{item.name}}</p>
-                        <p>Size: {{item.size}}</p>
-                        <p>Color: {{item.color}}</p>
+                        <p>大小: {{item.size}}</p>
+                        <p>颜色: {{item.color}}</p>
                     </div>
                     <p>${{item.price}}</p>
                     <button @click="removeFromCart(item.id)"
                     class="btn cart-list__btn-remove"
                     >
-                    Remove
+                    删除
                     </button>
                 </div>
             </li>
@@ -23,34 +23,34 @@
         <section class="total-section">
             <ul class="total-section-list">
                 <li class="total-section__item">
-                    <p class="total-section__item__label">{{cartItemsCount}} items</p>
+                    <p class="total-section__item__label">{{cartItemsCount}} 件商品</p>
                     <p>{{itemsSubtotal}}</p>
                 </li>
                 <li class="total-section__item">
-                    <p class="total-section__item__label">Shipping</p>
+                    <p class="total-section__item__label">到货时间</p>
                     <select v-model="selectedShippingOption">
-                        <option disabled value="">Please select an option</option>
+                        <option disabled value="">请选择时间</option>
                         <option v-for="opthion in shippingOptionsArray" :key="opthion.text" :value="opthion.rate">
                             {{opthion.text}}(${{opthion.rate}})
                         </option>
                     </select>
                 </li>
                 <li class="total-section__item">
-                    <p class="total-section__item__label">Subtotal</p>
+                    <p class="total-section__item__label">小计</p>
                     <p>{{subtotal}}</p>
                 </li>
                 <li class="total-section__item">
-                    <p class="total-section__item__label">Tax ({{salesTaxPercentage}})</p>
+                    <p class="total-section__item__label">税 ({{salesTaxPercentage}})</p>
                     <p>{{salesTaxApplied}}</p>
                 </li>
                 <li class="total-section__item">
-                    <p class="total-section__item__label">Total</p>
+                    <p class="total-section__item__label">总共</p>
                     <p>{{total}}</p>
                 </li>
             </ul>
             <button :disabled="!this.selectedShippingOption" 
             class="btn btn--grey total-section__checkout-button">
-                Check out
+                提交
             </button>
         </section>
        </div> 
@@ -66,19 +66,19 @@ export default {
             selectedShippingOption: '',
             shippingOptionsArray:[
                 {
-                    text: 'One day',
+                    text: '一天',
                     rate: 20
                 },
                 {
-                    text: 'Two day',
+                    text: '两天',
                     rate: 15
                 },
                 {
-                    text: 'Three to five days',
+                    text: '三到四天',
                     rate: 10
                 },
                 {
-                    text: 'One week or more',
+                    text: '一周',
                     rate: 5,
                 }
             ],
@@ -121,6 +121,7 @@ export default {
         }
     },
     methods:{
+        // 向store 发送删除操作
         removeFromCart(itemId){
             this.$store.dispatch('removeFromCart',itemId)
         }

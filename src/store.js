@@ -577,6 +577,7 @@ export default new Vuex.Store({
         state.products.find(product => product.id === itemId)
       );
     },
+    // 返回featured
     featuredProducts: state => {
       // 如果是true，就会返回
       return state.products.filter(p => p.featured);
