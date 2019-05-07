@@ -584,9 +584,10 @@ export default new Vuex.Store({
     },
     productsByGender: state => gender => {
       return state.products.filter(p => p.gender === gender);
-    },
-    productsByCategory: category => {
-      return this.state.products.filter(p => p.category === category);
     }
+    //,
+    // productsByCategory: category => {
+    //   return this.state.products.filter(p => p.category === category);
+    // }
   }
 });
