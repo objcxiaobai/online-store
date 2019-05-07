@@ -1,5 +1,3 @@
-# online-store
-
 ## 
 ## 目标：
 1. 商城页面主页
@@ -7,7 +5,14 @@
 3. 详细页面购买商品添加到购物车功能
 4. 购物车页面
 5. 分类
+
+### 效果图：
+## ![图片](https://uploader.shimo.im/f/pqL26BdIUZkF3OF7.png!thumbnail)
+
+
+---
 ## 
+
 ## 一.使用Vue CLI
 ### 1.介绍：
 它是一种快速开发Vue应用程序的方法，不用自己手动搭建webpack. 开箱即用。
@@ -235,14 +240,18 @@ return require(`../assets/img/products/${product.images[0]}`);
 
 把多个页面用到的方法，抽取到一个公共文件中。
 
-在src目录下：
+**在src目录下：**
+
 ![图片](https://uploader.shimo.im/f/zgwahi8gI9w8IlOr.png!thumbnail)
 
-文件內：
+
+**文件內：**
+
 ![图片](https://uploader.shimo.im/f/V8sOgK9mVIEbAwoC.png!thumbnail)
 
 
-组件引用：
+**组件引用：**
+
 
 ![图片](https://uploader.shimo.im/f/J9qCzVu19JoBirar.png!thumbnail)
 
@@ -251,5 +260,4 @@ return require(`../assets/img/products/${product.images[0]}`);
 
 
 ---
-
 
